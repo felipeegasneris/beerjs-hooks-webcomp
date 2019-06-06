@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<template id="vanilla-web-component-template">
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+    Hello, <span class="red">world</span>!
+</template>
+<script>
+  class VanillaWebComponent extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' });
+      const template = document.getElementById('vanilla-web-component-template');
+      const templateInstance = template.content.cloneNode(true);
+      this.shadowRoot.appendChild(templateInstance);
+    }
+  }
+  customElements.define('vanilla-web-component', VanillaWebComponent);
+</script>
+<vanilla-webcomponent></vanilla-webcomponent>
+</body>
+</html>
